@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp. Library for ORC.JSON", "Csharp. Library for ORC.JSON\Csharp. Library for ORC.JSON.csproj", "{F58CB3BB-9EA9-4389-9C64-30972F365CAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
