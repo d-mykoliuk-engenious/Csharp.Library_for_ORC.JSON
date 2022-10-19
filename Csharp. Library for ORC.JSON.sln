@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp. Library for ORC.JSON", "Csharp. Library for ORC.JSON\Csharp. Library for ORC.JSON.csproj", "{F58CB3BB-9EA9-4389-9C64-30972F365CAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{3FDA3667-FFDE-4979-8920-00F0C503B052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F58CB3BB-9EA9-4389-9C64-30972F365CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FDA3667-FFDE-4979-8920-00F0C503B052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDA3667-FFDE-4979-8920-00F0C503B052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDA3667-FFDE-4979-8920-00F0C503B052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDA3667-FFDE-4979-8920-00F0C503B052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

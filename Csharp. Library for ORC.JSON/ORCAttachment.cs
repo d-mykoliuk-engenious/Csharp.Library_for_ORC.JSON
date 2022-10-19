@@ -9,10 +9,10 @@ public class ORCAttachment
         Parameters = new Dictionary<string, string>
         {
             {"size", "0"},
-            {"uid", ""},
-            {"name", ""},
-            {"source", ""},
-            {"type", ""}
+            {"uid", "0"},
+            {"name", "default_name"},
+            {"source", "default_source"},
+            {"type", "default_type"}
         };
     }
     

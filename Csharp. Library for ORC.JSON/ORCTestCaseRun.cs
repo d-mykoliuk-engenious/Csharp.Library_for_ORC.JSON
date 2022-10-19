@@ -2,25 +2,22 @@
 
 public class OrcTestCaseRun
 {
-    // public enum ItemStatus
-    // {
-    //     // Get a proper ToString method
-    //     Todo,
-    //     Passed,
-    //     Failed,
-    //     Blocked,
-    //     Na,
-    // }
-    //
-    // public long SuiteItemId { get; set; }
-    // public long SuiteRunItemId { get; set; }
-    // public long CaseRunItemId { get; set; }
-    // public string CaseRunOriginalItemId { get; set; } = "";
-    // public string CaseRunItemName { get; set; } = "";
-    // public int CaseRunItemStatus { get; set; }
-    // public DateTimeOffset CaseRunStarted { get; set; }
-    // public DateTimeOffset CaseRunEnded { get; set; }
-    
+    public ORCParameter[] extended_parameters;
+    public ORCParameter[] tags;
+    public ORCAttachment[] attachments;
+    public ORCRunner[] runners;
+    public ORCTestCaseStep[] pre_test_steps;
+    public ORCTestCaseStep[] test_steps;
+    public ORCTestCaseStep[] post_test_steps;
 
-
+    public OrcTestCaseRun()
+    {
+        extended_parameters = new[] {new ORCParameter("tcr_param_Name", "tcr_param_Value")};
+        tags = new[] {new ORCParameter("tcr_tag_Name", "tcr_tag_Value")};
+        attachments = new[] {new ORCAttachment()};
+        runners = new[] {new ORCRunner()};
+        pre_test_steps = new[] {new ORCTestCaseStep()};
+        test_steps = new[] {new ORCTestCaseStep()};
+        post_test_steps = new[] {new ORCTestCaseStep()};
+    }
 }
