@@ -16,6 +16,15 @@ public class ORCTestSuite
 
     public ORCTestSuite()
     {
+        Id = RandomGenerator.GetRandomId();
+        Name = "";
+        Created = DateTimeOffset.Now;
+        Updated = DateTimeOffset.Now;
+        TestCases = Array.Empty<ORCTestCase>();
+        Tags = Array.Empty<ORCParameter>();
+        ExtParameters = Array.Empty<ORCParameter>();
+        Attachments = Array.Empty<ORCAttachment>();
+        Runners = Array.Empty<ORCRunner>();
     }
     
     

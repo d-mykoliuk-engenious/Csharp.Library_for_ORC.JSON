@@ -18,7 +18,20 @@ public class ORCTestSuiteRun
     [JsonProperty("attachments")] public ORCAttachment[] Attachments;
     [JsonProperty("runners")] public ORCRunner[] Runners;
 
-    public ORCTestSuiteRun(ORCTestSuite originalSuite)
+    public ORCTestSuiteRun()
     {
+        SuiteId = "";
+        Id = RandomGenerator.GetRandomId();
+        Name = "";
+        Created = DateTimeOffset.Now;
+        Updated = DateTimeOffset.Now;
+        Started = DateTimeOffset.Now;
+        Ended = DateTimeOffset.Now;
+        Status = OrcRunStatus.ORC_RUN_STATUS_TODO;
+        TestCaseRuns = Array.Empty<ORCTestCaseRun>();
+        Tags = Array.Empty<ORCParameter>();
+        ExtParameters = Array.Empty<ORCParameter>();
+        Attachments = Array.Empty<ORCAttachment>();
+        Runners = Array.Empty<ORCRunner>();
     }
 }

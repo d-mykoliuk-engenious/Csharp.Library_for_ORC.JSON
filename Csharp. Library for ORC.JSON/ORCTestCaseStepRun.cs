@@ -20,8 +20,22 @@ public class ORCTestCaseStepRun
     [JsonProperty("attachments")] public ORCAttachment[] Attachments;
     [JsonProperty("runners")] public ORCRunner[] Runners;
     
-    public ORCTestCaseStepRun(ORCTestCaseStep originalStep)
+    public ORCTestCaseStepRun()
     {
-        
+        SuiteId = "";
+        RunId = "";
+        CaseId = "";
+        CaseRunId = 1;
+        StepId = "";
+        Id = 1;
+        Created = DateTimeOffset.Now;
+        Updated = DateTimeOffset.Now;
+        Started = DateTimeOffset.Now;
+        Ended = DateTimeOffset.Now;
+        Status = OrcRunStatus.ORC_RUN_STATUS_TODO;
+        Tags = Array.Empty<ORCParameter>();
+        ExtParameters = Array.Empty<ORCParameter>();
+        Attachments = Array.Empty<ORCAttachment>();
+        Runners = Array.Empty<ORCRunner>();
     }
 }
