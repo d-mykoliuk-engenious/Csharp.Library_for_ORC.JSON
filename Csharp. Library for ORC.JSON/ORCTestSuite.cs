@@ -1,19 +1,22 @@
-﻿namespace Csharp._Library_for_ORC.JSON;
+﻿using Newtonsoft.Json;
+
+namespace Csharp._Library_for_ORC.JSON;
 
 public class ORCTestSuite
 {
-    public ORCParameter[] extended_parameters;
-    public ORCParameter[] tags;
-    public ORCAttachment[] attachments;
-    public ORCRunner[] runners;
-    public ORCTestSuiteRun[] test_suite_runs;
+    [JsonProperty("test_suite_uid")] public readonly string Id;
+    [JsonProperty("test_suite_name")] public readonly string Name;
+    [JsonProperty("created_at")] public readonly DateTimeOffset Created;
+    [JsonProperty("updated_at")] public DateTimeOffset Updated;
+    [JsonProperty("test_cases")] public ORCTestCase[] TestCases;
+    [JsonProperty("tags")] public ORCParameter[] Tags;
+    [JsonProperty("extended_parameters")] public ORCParameter[] ExtParameters;
+    [JsonProperty("attachments")] public ORCAttachment[] Attachments;
+    [JsonProperty("runners")] public ORCRunner[] Runners;
 
     public ORCTestSuite()
     {
-        extended_parameters = new[] {new ORCParameter()};
-        tags = new[] {new ORCParameter("tag_name", "tag_value")};
-        attachments = new[] {new ORCAttachment()};
-        runners = new[] {new ORCRunner()};
-        test_suite_runs = new[] {new ORCTestSuiteRun()};
     }
+    
+    
 }
