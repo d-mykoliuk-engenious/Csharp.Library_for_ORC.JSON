@@ -40,4 +40,13 @@ public class ORCTestCaseRun
         Attachments = Array.Empty<ORCAttachment>();
         Runners = Array.Empty<ORCRunner>();
     }
+
+    public void AddPreStepRun(ORCTestCaseStepRun stepRun)
+    {}
+    
+    public void AddStepRun(ORCTestCaseStepRun stepRun)
+    {}
+
+    public void AddPostStepRun(ORCTestCaseStepRun stepRun)
+    {}
 }

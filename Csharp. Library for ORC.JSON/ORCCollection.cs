@@ -8,7 +8,7 @@ public class ORCCollection
     [JsonProperty("collection_name")] public readonly string Name;
     [JsonProperty("created_at")] public readonly DateTimeOffset Created;
     [JsonProperty("updated_at")] public DateTimeOffset Updated;
-    [JsonProperty("test_suites")] public ORCTestSuite[] Suites;
+    [JsonProperty("test_suites")] public ORCTestSuite[] TestSuites;
     [JsonProperty("test_suite_runs")] public ORCTestSuiteRun[] SuiteRuns;
     [JsonProperty("tags")] public ORCParameter[] Tags;
     [JsonProperty("extended_parameters")] public ORCParameter[] ExtParameters;
@@ -16,7 +16,15 @@ public class ORCCollection
     
     public ORCCollection()
     {
-        
+        Id = RandomGenerator.GetRandomId();
+        Name = "";
+        Created = DateTimeOffset.Now;
+        Updated = DateTimeOffset.Now;
+        TestSuites = Array.Empty<ORCTestSuite>();
+        SuiteRuns = Array.Empty<ORCTestSuiteRun>();
+        Tags = Array.Empty<ORCParameter>();
+        ExtParameters = Array.Empty<ORCParameter>();
+        Attachments = Array.Empty<ORCAttachment>();
     }
 
     public OrcErrorCode AddRunTestSuite(ORCTestSuiteRun testSuiteRun)
