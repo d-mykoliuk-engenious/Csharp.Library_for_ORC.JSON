@@ -1,4 +1,6 @@
-﻿namespace Csharp._Library_for_ORC.JSON;
+﻿using Newtonsoft.Json.Converters;
+
+namespace Csharp._Library_for_ORC.JSON;
 
 public enum OrcRunStatus
 {
@@ -31,4 +33,14 @@ public enum OrcAttachmentName
 {
     ORC_ATTACHMENT_NAME_LOG,
     ORC_ATTACHMENT_NAME_COMMON
+}
+
+
+
+public class DateFormatConverter : IsoDateTimeConverter
+{
+    public DateFormatConverter()
+    {
+        DateTimeFormat = "yyyy-MM-dd hh-mm-ss(-fff)";
+    }
 }

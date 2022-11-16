@@ -9,25 +9,28 @@ public class ORCTestCaseStep
     [JsonProperty("test_case_step_uid")] public readonly string Id;
     [JsonProperty("test_case_step_name")] public readonly string Name;
     [JsonProperty("test_case_step_max_runs_count")] public int MaxRuns;
-    [JsonProperty("created_at")] public readonly DateTimeOffset Created;
-    [JsonProperty("updated_at")] public DateTimeOffset Updated;
-    [JsonProperty("tags")] public ORCParameter[] Tags;
-    [JsonProperty("extended_parameters")] public ORCParameter[] ExtParameters;
-    [JsonProperty("attachments")] public ORCAttachment[] Attachments;
-    [JsonProperty("runners")] public ORCRunner[] Runners;
+    [JsonProperty("created_at")] [JsonConverter(typeof(DateFormatConverter))] public readonly DateTimeOffset Created;
+    [JsonProperty("updated_at")] [JsonConverter(typeof(DateFormatConverter))] public DateTimeOffset Updated;
+    [JsonProperty("tags")] public IEnumerable<ORCParameter> Tags;
+    [JsonProperty("extended_parameters")] public IEnumerable<ORCParameter> ExtParameters;
+    [JsonProperty("attachments")] public IEnumerable<ORCAttachment> Attachments;
+    [JsonProperty("runners")] public IEnumerable<ORCRunner> Runners;
 
-    public ORCTestCaseStep()
+    public ORCTestCaseStep(string suiteId = "", string caseId = "", string id = "", string name = "", int maxRuns = 1,
+        DateTimeOffset? created = null, DateTimeOffset? updated = null,
+        IEnumerable<ORCParameter>? tags = null, IEnumerable<ORCParameter>? parameters = null,
+        IEnumerable<ORCAttachment>? attachments = null, IEnumerable<ORCRunner>? runners = null)
     {
-        SuiteId = "";
-        CaseId = "";
-        Id = RandomGenerator.GetRandomId();
-        Name = "";
-        MaxRuns = 1;
-        Created = DateTimeOffset.Now;
-        Updated = DateTimeOffset.Now;
-        Tags = Array.Empty<ORCParameter>();
-        ExtParameters = Array.Empty<ORCParameter>();
-        Attachments = Array.Empty<ORCAttachment>();
-        Runners = Array.Empty<ORCRunner>();
+        SuiteId = suiteId;
+        CaseId = caseId;
+        Id = id;
+        Name = name;
+        MaxRuns = maxRuns;
+        Created = created ?? DateTimeOffset.Now;
+        Updated = updated ?? DateTimeOffset.Now;
+        Tags = tags ?? Array.Empty<ORCParameter>();
+        ExtParameters = parameters ?? Array.Empty<ORCParameter>();
+        Attachments = attachments ?? Array.Empty<ORCAttachment>();
+        Runners = runners ?? Array.Empty<ORCRunner>();
     }
 }
