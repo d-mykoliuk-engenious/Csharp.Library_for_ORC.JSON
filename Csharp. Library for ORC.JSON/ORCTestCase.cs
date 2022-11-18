@@ -4,7 +4,7 @@ namespace Csharp._Library_for_ORC.JSON;
 
 public class ORCTestCase
 {
-    [JsonProperty("test_suite_uid")] public readonly string SuiteId;
+    [JsonProperty("test_suite_uid")] public string SuiteId;
     [JsonProperty("test_case_uid")] public readonly string Id;
     [JsonProperty("test_case_name")] public readonly string Name;
     [JsonProperty("test_case_max_runs_count")] public int MaxRuns;

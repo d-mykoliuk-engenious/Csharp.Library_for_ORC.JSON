@@ -4,9 +4,9 @@ namespace Csharp._Library_for_ORC.JSON;
 
 public class ORCTestCaseStepRun
 {
-    [JsonProperty("test_suite_uid")] public readonly string SuiteId;
-    [JsonProperty("test_suite_run_uid")] public readonly string RunId;
-    [JsonProperty("test_case_uid")] public readonly string CaseId;
+    [JsonProperty("test_suite_uid")] public string SuiteId;
+    [JsonProperty("test_suite_run_uid")] public string RunId;
+    [JsonProperty("test_case_uid")] public string CaseId;
     [JsonProperty("test_case_run_uid")] public int CaseRunId;
     [JsonProperty("test_case_step_uid")] public readonly string StepId;
     [JsonProperty("test_case_step_run_uid")] public int Id;

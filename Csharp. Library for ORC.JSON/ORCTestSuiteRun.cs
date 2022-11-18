@@ -4,7 +4,7 @@ namespace Csharp._Library_for_ORC.JSON;
 
 public class ORCTestSuiteRun
 {
-    [JsonProperty("test_suite_uid")] public readonly string SuiteId;
+    [JsonProperty("test_suite_uid")] public string SuiteId;
     [JsonProperty("test_suite_run_uid")] public readonly string Id;
     [JsonProperty("test_suite_run_name")] public readonly string Name;
     [JsonProperty("created_at")] [JsonConverter(typeof(DateFormatConverter) )] public readonly DateTimeOffset Created;

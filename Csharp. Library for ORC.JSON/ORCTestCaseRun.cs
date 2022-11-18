@@ -4,8 +4,8 @@ namespace Csharp._Library_for_ORC.JSON;
 
 public class ORCTestCaseRun
 {
-    [JsonProperty("test_suite_uid")] public readonly string SuiteId;
-    [JsonProperty("test_suite_run_uid")] public readonly string RunId;
+    [JsonProperty("test_suite_uid")] public string SuiteId;
+    [JsonProperty("test_suite_run_uid")] public string SuiteRunId;
     [JsonProperty("test_case_uid")] public readonly string CaseId;
     [JsonProperty("test_case_run_uid")] public int Id;
     [JsonProperty("created_at")] [JsonConverter(typeof(DateFormatConverter))] public readonly DateTimeOffset Created;
@@ -21,7 +21,7 @@ public class ORCTestCaseRun
     [JsonProperty("attachments")] public IEnumerable<ORCAttachment> Attachments;
     [JsonProperty("runners")] public IEnumerable<ORCRunner> Runners;
 
-    public ORCTestCaseRun(string suiteId = "", string runId = "", string caseId = "", int id = 1,
+    public ORCTestCaseRun(string suiteId = "", string suiteRunId = "", string caseId = "", int id = 1,
         IEnumerable<ORCTestCaseStepRun>? preSteps = null, IEnumerable<ORCTestCaseStepRun>? steps = null, IEnumerable<ORCTestCaseStepRun>? postSteps = null,
         DateTimeOffset? created = null, DateTimeOffset? updated = null, DateTimeOffset? started = null, DateTimeOffset? ended = null,
         OrcRunStatus status = OrcRunStatus.ORC_RUN_STATUS_TODO,
@@ -29,7 +29,7 @@ public class ORCTestCaseRun
         IEnumerable<ORCAttachment>? attachments = null, IEnumerable<ORCRunner>? runners = null)
     {
         SuiteId = suiteId;
-        RunId = runId;
+        SuiteRunId = suiteRunId;
         CaseId = caseId;
         Id = id;
         PreStepsRuns = preSteps ?? Array.Empty<ORCTestCaseStepRun>();
