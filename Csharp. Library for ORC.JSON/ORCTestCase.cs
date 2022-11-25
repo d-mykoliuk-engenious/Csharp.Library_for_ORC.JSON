@@ -39,24 +39,27 @@ public class ORCTestCase
         Runners = runners ?? Array.Empty<ORCRunner>();
     }
 
-    public void AddPreStep(ORCTestCaseStep preStep)
+    internal void AddPreStep(ORCTestCaseStep preStep)
     {
-        preStep.SuiteId = SuiteId;
-        preStep.CaseId = Id;
+        AdaptStep(preStep);
         PreSteps = PreSteps.Append(preStep);
     }
     
-    public void AddStep(ORCTestCaseStep step)
+    internal void AddStep(ORCTestCaseStep step)
     {
-        step.SuiteId = SuiteId;
-        step.CaseId = Id;
+        AdaptStep(step);
         Steps = Steps.Append(step);
     }
     
-    public void AddPostStep(ORCTestCaseStep postStep)
+    internal void AddPostStep(ORCTestCaseStep postStep)
     {
-        postStep.SuiteId = SuiteId;
-        postStep.CaseId = Id;
+        AdaptStep(postStep);
         PostSteps = PostSteps.Append(postStep);
+    }
+
+    private void AdaptStep(ORCTestCaseStep step)
+    {
+        step.SuiteId = SuiteId;
+        step.CaseId = Id;
     }
 }
