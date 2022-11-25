@@ -5,7 +5,7 @@ namespace Csharp._Library_for_ORC.JSON;
 public class ORCTestCaseStepRun
 {
     [JsonProperty("test_suite_uid")] public string SuiteId;
-    [JsonProperty("test_suite_run_uid")] public string RunId;
+    [JsonProperty("test_suite_run_uid")] public string SuiteRunId;
     [JsonProperty("test_case_uid")] public string CaseId;
     [JsonProperty("test_case_run_uid")] public int CaseRunId;
     [JsonProperty("test_case_step_uid")] public readonly string StepId;
@@ -20,14 +20,14 @@ public class ORCTestCaseStepRun
     [JsonProperty("attachments")] public IEnumerable<ORCAttachment> Attachments;
     [JsonProperty("runners")] public IEnumerable<ORCRunner> Runners;
     
-    public ORCTestCaseStepRun(string suiteId = "", string runId = "", string caseId = "", int caseRunId = 1, string stepId = "", int id = 1, int maxRuns = 1,
+    public ORCTestCaseStepRun(string suiteId = "", string suiteRunId = "", string caseId = "", int caseRunId = 1, string stepId = "", int id = 1,
         DateTimeOffset? created = null, DateTimeOffset? updated = null, DateTimeOffset? started = null, DateTimeOffset? ended = null,
         OrcRunStatus status = OrcRunStatus.ORC_RUN_STATUS_TODO,
         IEnumerable<ORCParameter>? tags = null, IEnumerable<ORCParameter>? parameters = null,
         IEnumerable<ORCAttachment>? attachments = null, IEnumerable<ORCRunner>? runners = null)
     {
         SuiteId = suiteId;
-        RunId = runId;
+        SuiteRunId = suiteRunId;
         CaseId = caseId;
         CaseRunId = caseRunId;
         StepId = stepId;

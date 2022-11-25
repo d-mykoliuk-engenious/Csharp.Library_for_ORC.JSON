@@ -41,16 +41,22 @@ public class ORCTestCase
 
     public void AddPreStep(ORCTestCaseStep preStep)
     {
+        preStep.SuiteId = SuiteId;
+        preStep.CaseId = Id;
         PreSteps = PreSteps.Append(preStep);
     }
     
     public void AddStep(ORCTestCaseStep step)
     {
+        step.SuiteId = SuiteId;
+        step.CaseId = Id;
         Steps = Steps.Append(step);
     }
     
     public void AddPostStep(ORCTestCaseStep postStep)
     {
-        PreSteps = PreSteps.Append(postStep);
+        postStep.SuiteId = SuiteId;
+        postStep.CaseId = Id;
+        PostSteps = PostSteps.Append(postStep);
     }
 }

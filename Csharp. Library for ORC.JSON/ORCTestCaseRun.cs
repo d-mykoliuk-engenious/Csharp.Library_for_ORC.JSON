@@ -48,16 +48,28 @@ public class ORCTestCaseRun
 
     public void AddPreStepRun(ORCTestCaseStepRun stepRun)
     {
+        stepRun.CaseRunId = Id;
+        stepRun.CaseId = CaseId;
+        stepRun.SuiteId = SuiteId;
+        stepRun.SuiteRunId = SuiteRunId;
         PreStepsRuns = PreStepsRuns.Append(stepRun);
     }
 
     public void AddStepRun(ORCTestCaseStepRun stepRun)
     {
+        stepRun.CaseRunId = Id;
+        stepRun.CaseId = CaseId;
+        stepRun.SuiteId = SuiteId;
+        stepRun.SuiteRunId = SuiteRunId;
         StepsRuns = StepsRuns.Append(stepRun);
     }
 
     public void AddPostStepRun(ORCTestCaseStepRun stepRun)
     {
+        stepRun.CaseRunId = Id;
+        stepRun.CaseId = CaseId;
+        stepRun.SuiteId = SuiteId;
+        stepRun.SuiteRunId = SuiteRunId;
         PostStepsRuns = PostStepsRuns.Append(stepRun);
     }
 }

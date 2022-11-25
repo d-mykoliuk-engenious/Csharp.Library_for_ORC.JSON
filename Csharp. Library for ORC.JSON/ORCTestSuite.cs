@@ -32,6 +32,7 @@ public class ORCTestSuite
 
     public void AddTestCase(ORCTestCase testCase)
     {
+        testCase.SuiteId = Id;
         TestCases = TestCases.Append(testCase);
     }
 }
