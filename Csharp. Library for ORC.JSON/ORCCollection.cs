@@ -35,12 +35,19 @@ public class ORCCollection
 
     public OrcErrorCode AddRunTestSuite(ORCTestSuiteRun testSuiteRun)
     {
-        SuiteRuns = SuiteRuns.Append(testSuiteRun);
+        var suiteIdCollection = TestSuites.Select(suite => suite.Id);
+        if (!suiteIdCollection.Contains(testSuiteRun.SuiteId))
+        {
+            // TODO: Create testsuite1
+            return OrcErrorCode.ORC_ERROR_CODE_NO_COMMON_ERROR;
+        }
+        SuiteRuns = SuiteRuns.Append(testSuiteRun.DeepClone());
         return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
     }
 
     public OrcErrorCode AddRunTestCase()
     {
+        
         return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
     }
 
@@ -70,16 +77,16 @@ public class ORCCollection
         testcase.AddStep(new ORCTestCaseStep(id: RandomGenerator.GetRandomId(), name: "Step1"));
         testcase.AddPostStep(new ORCTestCaseStep(id: RandomGenerator.GetRandomId(), name: "PostStep1"));
 
-        var suiteRun = new ORCTestSuiteRun(suiteId: suite1.Id, id: RandomGenerator.GetRandomId(), name: "Suite 1 run 1");
+        var suite1Run = new ORCTestSuiteRun(suiteId: suite1.Id, id: RandomGenerator.GetRandomId(), name: "Suite 1 run 1");
 
-        var testcaseRun = new ORCTestCaseRun(caseId: testcase.Id, suiteId: suite1.Id, suiteRunId: suiteRun.Id);
-        testcaseRun.AddPreStepRun(new ORCTestCaseStepRun(suiteId: suite1.Id, suiteRunId: suiteRun.Id, caseId: testcase.Id, stepId: testcase.PreSteps.First().Id));
-        testcaseRun.AddStepRun(new ORCTestCaseStepRun(suiteId: suite1.Id, suiteRunId: suiteRun.Id, caseId: testcase.Id, stepId: testcase.Steps.First().Id));
-        testcaseRun.AddPostStepRun(new ORCTestCaseStepRun(suiteId: suite1.Id, suiteRunId: suiteRun.Id, caseId: testcase.Id, stepId: testcase.PostSteps.First().Id));
-        suiteRun.AddCaseRun(testcaseRun);
-        
-        collection.TestSuites = collection.TestSuites.Append(suite1);
-        collection.AddRunTestSuite(suiteRun);
+        var testcaseRun = new ORCTestCaseRun(caseId: testcase.Id);
+        suite1Run.AddCaseRun(testcaseRun);
+        testcaseRun.AddPreStepRun(new ORCTestCaseStepRun(stepId: testcase.PreSteps.First().Id));
+        testcaseRun.AddStepRun(new ORCTestCaseStepRun(stepId: testcase.Steps.First().Id));
+        testcaseRun.AddPostStepRun(new ORCTestCaseStepRun(stepId: testcase.PostSteps.First().Id));
+
+        collection.AddTestSuite(suite1);
+        collection.AddRunTestSuite(suite1Run);
 
         return collection;
     }
@@ -94,5 +101,10 @@ public class ORCCollection
             writer.Formatting = Formatting.Indented;
             serializer.Serialize(writer, this);
         }
+    }
+
+    internal void AddTestSuite(ORCTestSuite suite)
+    {
+        TestSuites = TestSuites.Append(suite);
     }
 }

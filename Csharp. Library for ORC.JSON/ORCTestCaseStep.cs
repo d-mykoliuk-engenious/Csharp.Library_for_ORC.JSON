@@ -2,6 +2,7 @@
 
 namespace Csharp._Library_for_ORC.JSON;
 
+[Serializable]
 public class ORCTestCaseStep
 {
     [JsonProperty("test_suite_uid")] public string SuiteId;

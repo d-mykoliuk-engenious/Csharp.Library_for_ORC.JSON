@@ -2,6 +2,7 @@
 
 namespace Csharp._Library_for_ORC.JSON;
 
+[Serializable]
 public class ORCTestCase
 {
     [JsonProperty("test_suite_uid")] public string SuiteId;
@@ -41,25 +42,26 @@ public class ORCTestCase
 
     internal void AddPreStep(ORCTestCaseStep preStep)
     {
-        AdaptStep(preStep);
-        PreSteps = PreSteps.Append(preStep);
+        var newPreStep = AdaptStep(preStep.DeepClone());
+        PreSteps = PreSteps.Append(newPreStep);
     }
     
     internal void AddStep(ORCTestCaseStep step)
     {
-        AdaptStep(step);
-        Steps = Steps.Append(step);
+        var newStep = AdaptStep(step.DeepClone());
+        Steps = Steps.Append(newStep);
     }
     
     internal void AddPostStep(ORCTestCaseStep postStep)
     {
-        AdaptStep(postStep);
-        PostSteps = PostSteps.Append(postStep);
+        var newPostStep = AdaptStep(postStep.DeepClone());
+        PostSteps = PostSteps.Append(newPostStep);
     }
 
-    private void AdaptStep(ORCTestCaseStep step)
+    private ORCTestCaseStep AdaptStep(ORCTestCaseStep step)
     {
         step.SuiteId = SuiteId;
         step.CaseId = Id;
+        return step;
     }
 }

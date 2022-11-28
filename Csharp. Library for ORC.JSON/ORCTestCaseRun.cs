@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Csharp._Library_for_ORC.JSON;
 
+[Serializable]
 public class ORCTestCaseRun
 {
     [JsonProperty("test_suite_uid")] public string SuiteId;
@@ -12,7 +14,7 @@ public class ORCTestCaseRun
     [JsonProperty("updated_at")] [JsonConverter(typeof(DateFormatConverter))] public DateTimeOffset Updated;
     [JsonProperty("started_at")] [JsonConverter(typeof(DateFormatConverter))] public readonly DateTimeOffset Started;
     [JsonProperty("ended_at")] [JsonConverter(typeof(DateFormatConverter))] public readonly DateTimeOffset Ended;
-    [JsonProperty("run_status")] public OrcRunStatus Status;
+    [JsonProperty("run_status")] [JsonConverter(typeof(StringEnumConverter))] public OrcRunStatus Status;
     [JsonProperty("pre_test_steps_runs")] public IEnumerable<ORCTestCaseStepRun> PreStepsRuns;
     [JsonProperty("test_steps_runs")] public IEnumerable<ORCTestCaseStepRun> StepsRuns;
     [JsonProperty("post_test_steps_runs")] public IEnumerable<ORCTestCaseStepRun> PostStepsRuns;
