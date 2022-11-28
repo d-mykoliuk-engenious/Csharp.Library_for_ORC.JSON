@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace Csharp._Library_for_ORC.JSON;
 
@@ -13,11 +14,14 @@ public static class Service
     public static T DeepClone<T>(this T obj)
     {
         using var ms = new MemoryStream();
-        // TODO: Binary serialization or some other serialization?
-        var formatter = new BinaryFormatter();
-        formatter.Serialize(ms, obj);
-        ms.Position = 0;
+        // TODO: Some other serialization?
+        string json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+        var clone = JsonConvert.DeserializeObject<T>(json);
+        if (clone == null)
+        {
+            throw new NullReferenceException("Cloning resulted in a null");
+        }
 
-        return (T) formatter.Deserialize(ms);
+        return clone;
     }
 }

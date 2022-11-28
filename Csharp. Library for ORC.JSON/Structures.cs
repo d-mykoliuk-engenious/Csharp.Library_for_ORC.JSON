@@ -35,8 +35,6 @@ public enum OrcAttachmentName
     ORC_ATTACHMENT_NAME_COMMON
 }
 
-
-
 public class DateFormatConverter : IsoDateTimeConverter
 {
     public DateFormatConverter()

@@ -8,7 +8,7 @@ public class ORCCollection
     [JsonProperty("collection_name")] public readonly string Name;
     [JsonProperty("created_at")] [JsonConverter(typeof(DateFormatConverter))]  public readonly DateTimeOffset Created;
     [JsonProperty("updated_at")] [JsonConverter(typeof(DateFormatConverter))] public DateTimeOffset Updated;
-    [JsonProperty("test_suites")] public IEnumerable<ORCTestSuite> TestSuites;
+    [JsonProperty("test_suites")] public IEnumerable<ORCTestSuite?> TestSuites;
     [JsonProperty("test_suite_runs")] public IEnumerable<ORCTestSuiteRun> SuiteRuns;
     [JsonProperty("tags")] public IEnumerable<ORCParameter> Tags;
     [JsonProperty("extended_parameters")] public IEnumerable<ORCParameter> ExtParameters;
@@ -16,7 +16,7 @@ public class ORCCollection
     
     public ORCCollection(string id = "", string name = "",
         DateTimeOffset? created = null, DateTimeOffset? updated = null,
-        IEnumerable<ORCTestSuite>? suites = null, IEnumerable<ORCTestSuiteRun>? suiteRuns = null,
+        IEnumerable<ORCTestSuite?>? suites = null, IEnumerable<ORCTestSuiteRun>? suiteRuns = null,
         IEnumerable<ORCParameter>? tags = null, IEnumerable<ORCParameter>? parameters = null,
         IEnumerable<ORCAttachment>? attachments = null)
     {
@@ -35,7 +35,7 @@ public class ORCCollection
 
     public OrcErrorCode AddRunTestSuite(ORCTestSuiteRun testSuiteRun)
     {
-        var suiteIdCollection = TestSuites.Select(suite => suite.Id);
+        var suiteIdCollection = TestSuites.Select(suite => suite!.Id);
         if (!suiteIdCollection.Contains(testSuiteRun.SuiteId))
         {
             // TODO: Create testsuite1
@@ -45,23 +45,23 @@ public class ORCCollection
         return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
     }
 
-    public OrcErrorCode AddRunTestCase()
+    public OrcErrorCode AddRunTestCase(ORCTestCaseRun caseRun)
     {
-        
+        var newCaseRun = caseRun.DeepClone();
         return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
     }
 
-    public OrcErrorCode AddRunPreTestCaseStep()
-    {
-        return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
-    }
-
-    public OrcErrorCode AddRunTestCaseStep()
+    public OrcErrorCode AddRunPreTestCaseStep(ORCTestCaseStepRun stepCaseRun)
     {
         return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
     }
 
-    public OrcErrorCode AddRunPostTestCaseStep()
+    public OrcErrorCode AddRunTestCaseStep(ORCTestCaseStepRun stepCaseRun)
+    {
+        return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
+    }
+
+    public OrcErrorCode AddRunPostTestCaseStep(ORCTestCaseStepRun stepCaseRun)
     {
         return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
     }
@@ -105,6 +105,6 @@ public class ORCCollection
 
     internal void AddTestSuite(ORCTestSuite suite)
     {
-        TestSuites = TestSuites.Append(suite);
+        TestSuites = TestSuites.Append(suite.DeepClone());
     }
 }

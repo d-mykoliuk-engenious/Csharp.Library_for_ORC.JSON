@@ -43,8 +43,9 @@ public class ORCTestSuiteRun
 
     public void AddCaseRun(ORCTestCaseRun caseRun)
     {
-        caseRun.SuiteId = SuiteId;
-        caseRun.SuiteRunId = Id;
+        var newCaseRun = caseRun.DeepClone();
+        newCaseRun.SuiteId = SuiteId;
+        newCaseRun.SuiteRunId = Id;
         TestCaseRuns = TestCaseRuns.Append(caseRun);
     }
 }
