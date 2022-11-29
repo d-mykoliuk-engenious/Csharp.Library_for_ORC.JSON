@@ -39,6 +39,11 @@ public class ORCTestCase
         Runners = runners ?? Array.Empty<ORCRunner>();
     }
 
+    public ORCTestCase(ORCTestCaseRun caseRun)
+    {
+        // TODO: Implement this
+    }
+
     internal void AddPreStep(ORCTestCaseStep preStep)
     {
         var newPreStep = AdaptStep(preStep.DeepClone());

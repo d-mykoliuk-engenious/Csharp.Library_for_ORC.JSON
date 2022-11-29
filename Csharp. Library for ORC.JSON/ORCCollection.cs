@@ -35,14 +35,15 @@ public class ORCCollection
 
     public OrcErrorCode AddRunTestSuite(ORCTestSuiteRun testSuiteRun)
     {
-        var suiteIdCollection = TestSuites.Select(suite => suite!.Id);
-        if (!suiteIdCollection.Contains(testSuiteRun.SuiteId))
+        var exitCode = OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
+        var suiteIdsCollection = TestSuites.Select(suite => suite!.Id);
+        if (!suiteIdsCollection.Contains(testSuiteRun.SuiteId))
         {
-            // TODO: Create testsuite1
-            return OrcErrorCode.ORC_ERROR_CODE_NO_COMMON_ERROR;
+            TestSuites = TestSuites.Append(new ORCTestSuite(testSuiteRun));
+            exitCode = OrcErrorCode.ORC_ERROR_CODE_NO_COMMON_ERROR;
         }
         SuiteRuns = SuiteRuns.Append(testSuiteRun.DeepClone());
-        return OrcErrorCode.ORC_ERROR_CODE_NO_ERRORS;
+        return exitCode;
     }
 
     public OrcErrorCode AddRunTestCase(ORCTestCaseRun caseRun)

@@ -30,9 +30,32 @@ public class ORCTestSuite
         Runners = runners ?? Array.Empty<ORCRunner>();
     }
 
+    /// <summary>
+    /// Creates a test suite model from the test suite run.
+    /// </summary>
+    /// <param name="suiteRun">A test suite run.</param>
+    public ORCTestSuite(ORCTestSuiteRun suiteRun)
+    {
+        Id = suiteRun.SuiteId;
+        Name = suiteRun.Name;
+        Created = DateTimeOffset.Now;
+        Updated = DateTimeOffset.Now;
+        TestCases = suiteRun.TestCaseRuns.Select(caseRun => new ORCTestCase(caseRun));
+        Tags = suiteRun.Tags;
+        ExtParameters = suiteRun.ExtParameters;
+        Attachments = Array.Empty<ORCAttachment>();
+        Runners = suiteRun.Runners;
+    }
+
     public void AddTestCase(ORCTestCase testCase)
     {
+        var newCase = AdaptTestCase(testCase.DeepClone());
+        TestCases = TestCases.Append(newCase);
+    }
+
+    private ORCTestCase AdaptTestCase(ORCTestCase testCase)
+    {
         testCase.SuiteId = Id;
-        TestCases = TestCases.Append(testCase);
+        return testCase;
     }
 }

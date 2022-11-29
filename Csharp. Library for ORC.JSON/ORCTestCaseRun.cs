@@ -49,30 +49,28 @@ public class ORCTestCaseRun
 
     internal void AddPreStepRun(ORCTestCaseStepRun stepRun)
     {
-        var preStepRun = stepRun.DeepClone();
-        AdaptStepRun(preStepRun);
+        var preStepRun = AdaptStepRun(stepRun.DeepClone());
         PreStepsRuns = PreStepsRuns.Append(preStepRun);
     }
 
     internal void AddStepRun(ORCTestCaseStepRun stepRun)
     {
-        var regularStepRun = stepRun.DeepClone();
-        AdaptStepRun(regularStepRun);
+        var regularStepRun = AdaptStepRun(stepRun.DeepClone());
         StepsRuns = StepsRuns.Append(regularStepRun);
     }
 
     internal void AddPostStepRun(ORCTestCaseStepRun stepRun)
     {
-        var postStepRun = stepRun.DeepClone();
-        AdaptStepRun(postStepRun);
+        var postStepRun = AdaptStepRun(stepRun.DeepClone());
         PostStepsRuns = PostStepsRuns.Append(postStepRun);
     }
 
-    private void AdaptStepRun(ORCTestCaseStepRun stepRun)
+    private ORCTestCaseStepRun AdaptStepRun(ORCTestCaseStepRun stepRun)
     {
         stepRun.CaseRunId = Id;
         stepRun.CaseId = CaseId;
         stepRun.SuiteId = SuiteId;
         stepRun.SuiteRunId = SuiteRunId;
+        return stepRun;
     }
 }

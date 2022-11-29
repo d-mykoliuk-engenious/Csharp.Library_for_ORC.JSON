@@ -33,4 +33,9 @@ public class ORCTestCaseStep
         Attachments = attachments ?? Array.Empty<ORCAttachment>();
         Runners = runners ?? Array.Empty<ORCRunner>();
     }
+
+    public ORCTestCaseStep(ORCTestCaseStepRun stepRun)
+    {
+        // TODO: Implement this
+    }
 }
