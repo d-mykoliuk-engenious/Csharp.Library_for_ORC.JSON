@@ -3,7 +3,6 @@ using Newtonsoft.Json.Converters;
 
 namespace Csharp._Library_for_ORC.JSON;
 
-[Serializable]
 public class ORCTestSuiteRun
 {
     [JsonProperty("test_suite_uid")] public string SuiteId;
@@ -43,9 +42,14 @@ public class ORCTestSuiteRun
 
     public void AddCaseRun(ORCTestCaseRun caseRun)
     {
-        var newCaseRun = caseRun.DeepClone();
-        newCaseRun.SuiteId = SuiteId;
-        newCaseRun.SuiteRunId = Id;
-        TestCaseRuns = TestCaseRuns.Append(caseRun);
+        var newCaseRun = AdaptCaseRun(caseRun.DeepClone());
+        TestCaseRuns = TestCaseRuns.Append(newCaseRun);
+    }
+
+    private ORCTestCaseRun AdaptCaseRun(ORCTestCaseRun caseRun)
+    {
+        caseRun.SuiteId = SuiteId;
+        caseRun.SuiteRunId = Id;
+        return caseRun;
     }
 }

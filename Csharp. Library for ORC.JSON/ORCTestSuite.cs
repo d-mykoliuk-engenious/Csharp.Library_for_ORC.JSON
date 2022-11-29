@@ -2,7 +2,6 @@
 
 namespace Csharp._Library_for_ORC.JSON;
 
-[Serializable]
 public class ORCTestSuite
 {
     [JsonProperty("test_suite_uid")] public readonly string Id;

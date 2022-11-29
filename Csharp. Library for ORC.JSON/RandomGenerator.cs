@@ -2,18 +2,18 @@
 
 public static class RandomGenerator
 {
-    private static Random _random = new Random();
+    private static readonly Random Random = new();
 
     public static string GetRandomId(int digits = 10)
     {
         byte[] buffer = new byte[digits / 2];
-        _random.NextBytes(buffer);
+        Random.NextBytes(buffer);
         string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
         if (digits % 2 == 0)
         {
             return result;
         }
 
-        return result + _random.Next(16).ToString("X");
+        return result + Random.Next(16).ToString("X");
     }
 }

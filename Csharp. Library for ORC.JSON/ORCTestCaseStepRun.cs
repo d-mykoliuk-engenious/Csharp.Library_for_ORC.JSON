@@ -3,7 +3,6 @@ using Newtonsoft.Json.Converters;
 
 namespace Csharp._Library_for_ORC.JSON;
 
-[Serializable]
 public class ORCTestCaseStepRun
 {
     [JsonProperty("test_suite_uid")] public string SuiteId;

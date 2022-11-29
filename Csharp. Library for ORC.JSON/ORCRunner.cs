@@ -1,6 +1,5 @@
 ﻿namespace Csharp._Library_for_ORC.JSON;
 
-[Serializable]
 public class ORCRunner
 {
     public Dictionary<string, string> Runner_params;
